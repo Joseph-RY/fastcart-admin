@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import ChartCards from "../../shared/ui/chart-cards";
 import ApexChart from "../../widgets/apex-chart";
@@ -10,8 +10,16 @@ import cost from "/src/shared/images/discount.png";
 import tick from "/src/shared/images/tick.png";
 import product from "/src/shared/images/product.png";
 import ProductTable from "../../widgets/product-table";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("access_token");
+    if (!token) navigate("/");
+  }, []);
+
   return (
     <div className="space-y-4">
       <div className="flex flex-col lg:flex-row gap-4">

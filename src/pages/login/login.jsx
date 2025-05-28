@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
+
 import { Button } from "@mui/material";
 
 import logo from "/src/shared/images/logo.png";
+
 import { logIn } from "../../features/auth/authSlice";
 
 const Login = () => {
@@ -14,17 +16,22 @@ const Login = () => {
   const goTo = useNavigate();
 
   const handleLogin = async () => {
-    let userData = {
+    if (!email || !password) {
+      toast.error("Email and password are required");
+      return;
+    }
+
+    const userData = {
       userName: email,
       password: password,
     };
 
     try {
-      await dispatch(logIn(userData));
+      await dispatch(logIn(userData)).unwrap();
       toast.success("Login successful");
       goTo("/dashboard");
     } catch (error) {
-      toast.error("Something went wrong");
+      toast.error("Login failed");
     }
   };
 
