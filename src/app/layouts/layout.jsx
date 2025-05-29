@@ -7,12 +7,19 @@ import LayersIcon from "@mui/icons-material/Layers";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
+import icon from "/src/shared/images/logo_icon.png";
+
 const NAVIGATION = [
   { kind: "header", title: "Main items" },
   { segment: "dashboard", title: "Dashboard", icon: <DashboardIcon /> },
   { segment: "dashboard/orders", title: "Orders", icon: <ShoppingCartIcon /> },
   { segment: "dashboard/products", title: "Products", icon: <LayersIcon /> },
-  { segment: "dashboard/other", title: "Other", icon: <BarChartIcon /> },
+  {
+    segment: "dashboard/other",
+    title: "Other",
+    icon: <BarChartIcon />,
+    pattern: "other{/:pageId}*",
+  },
 ];
 
 const demoTheme = extendTheme({
@@ -45,8 +52,17 @@ const Layout = () => {
   const demoWindow = typeof window !== "undefined" ? window : undefined;
 
   return (
-    <AppProvider navigation={NAVIGATION} router={router} theme={demoTheme} window={demoWindow}>
-      <DashboardLayout>
+    <AppProvider
+      branding={{
+        logo: <img src={icon} alt="MUI logo" />,
+        title: "Fastcart",
+      }}
+      navigation={NAVIGATION}
+      router={router}
+      theme={demoTheme}
+      window={demoWindow}
+    >
+      <DashboardLayout defaultSidebarCollapsed>
         <PageContainer>
           <Outlet />
         </PageContainer>

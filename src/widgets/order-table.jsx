@@ -10,6 +10,8 @@ const columns = [
     field: "age",
     headerName: "Age",
     type: "number",
+    headerAlign: "center",
+    align: "center",
     width: 90,
   },
   {
@@ -45,7 +47,7 @@ const rows = [
   { id: 20, lastName: "Lannister", firstName: "Cersei", age: 42 },
   { id: 21, lastName: "Lannister", firstName: "Jaime", age: 45 },
   { id: 22, lastName: "Stark", firstName: "Arya", age: 16 },
-  { id: 23, lastName: "Targaryen", firstName: "Daenerys", age: 35 }
+  { id: 23, lastName: "Targaryen", firstName: "Daenerys", age: 35 },
 ];
 
 const paginationModel = { page: 0, pageSize: 5 };

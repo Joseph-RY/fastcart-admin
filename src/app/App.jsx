@@ -5,9 +5,9 @@ import Orders from "/src/pages/orders/orders";
 import Products from "/src/pages/products/products";
 import Other from "/src/pages/other/other";
 import Login from "/src/pages/login/login";
+import OtherChild from "../pages/other-child/other-child";
 
 function App() {
-
   const router = createBrowserRouter([
     {
       path: "/",
@@ -38,6 +38,10 @@ function App() {
         {
           path: "other",
           element: <Other />,
+        },
+        {
+          path: "other/:pageId",
+          element: <OtherChild />,
         },
       ],
     },
