@@ -9,7 +9,7 @@ import sales from "/src/shared/images/chart.png";
 import cost from "/src/shared/images/discount.png";
 import tick from "/src/shared/images/tick.png";
 import product from "/src/shared/images/product.png";
-import ProductTable from "../../widgets/product-table";
+import TopProductTable from "../../widgets/top-product-table";
 import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
@@ -56,7 +56,7 @@ const Dashboard = () => {
       </div>
       <div className="w-full flex flex-col md:flex-row items-stretch gap-4">
         <RecentTable />
-        <ProductTable />
+        <TopProductTable />
       </div>
     </div>
   );

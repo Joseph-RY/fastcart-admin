@@ -14,12 +14,7 @@ const NAVIGATION = [
   { segment: "dashboard", title: "Dashboard", icon: <DashboardIcon /> },
   { segment: "dashboard/orders", title: "Orders", icon: <ShoppingCartIcon /> },
   { segment: "dashboard/products", title: "Products", icon: <LayersIcon /> },
-  {
-    segment: "dashboard/other",
-    title: "Other",
-    icon: <BarChartIcon />,
-    pattern: "other{/:pageId}*",
-  },
+  { segment: "dashboard/other", title: "Other", icon: <BarChartIcon /> },
 ];
 
 const demoTheme = extendTheme({
@@ -54,7 +49,7 @@ const Layout = () => {
   return (
     <AppProvider
       branding={{
-        logo: <img src={icon} alt="MUI logo" />,
+        logo: <img src={icon} alt="Fastcart logo" />,
         title: "Fastcart",
       }}
       navigation={NAVIGATION}

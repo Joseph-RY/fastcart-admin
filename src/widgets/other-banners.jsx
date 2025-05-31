@@ -1,6 +1,6 @@
 import React from 'react'
 
-const OtherChild = () => {
+const OtherBanners = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const OtherChild = () => {
   )
 }
 
-export default OtherChild
+export default OtherBanners

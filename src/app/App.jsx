@@ -1,11 +1,13 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
 import Layout from "/src/app/layouts/layout";
 import Dashboard from "/src/pages/dashboard/dashboard";
 import Orders from "/src/pages/orders/orders";
 import Products from "/src/pages/products/products";
 import Other from "/src/pages/other/other";
 import Login from "/src/pages/login/login";
-import OtherChild from "../pages/other-child/other-child";
+import OtherCategories from "../widgets/other-categories";
+import OtherBrands from "../widgets/other-brands";
+import OtherBanners from "../widgets/other-banners";
 
 function App() {
   const router = createBrowserRouter([
@@ -38,10 +40,24 @@ function App() {
         {
           path: "other",
           element: <Other />,
-        },
-        {
-          path: "other/:pageId",
-          element: <OtherChild />,
+          children: [
+            {
+              index: true,
+              element: <Navigate to="categories" />,
+            },
+            {
+              path: "categories",
+              element: <OtherCategories />,
+            },
+            {
+              path: "brands",
+              element: <OtherBrands />,
+            },
+            {
+              path: "banners",
+              element: <OtherBanners />,
+            },
+          ],
         },
       ],
     },
