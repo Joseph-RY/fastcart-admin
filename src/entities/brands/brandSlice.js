@@ -32,8 +32,7 @@ export const addBrands = createAsyncThunk("brand/addBrands", async (newBrand, { 
 
 export const editBrand = createAsyncThunk("brand/editBrand", async ({ id, BrandName }, { dispatch }) => {
     const token = localStorage.getItem("access_token");
-    const { data } = await axios.put(
-        `${apiUrl}/Brand/update-brand`, {}, {
+    const { data } = await axios.put(`${apiUrl}/Brand/update-brand`, {}, {
         params: { Id: id, BrandName },
         headers: {
             Authorization: `Bearer ${token}`,
