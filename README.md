@@ -4,6 +4,10 @@
 
 ---
 
+## 🎯 Demo : ![https://fastcart-admin.vercel.app](https://fastcart-admin.vercel.app)
+
+---
+
 ## 🔧 Key Features
 
 - **Product Management:** create, edit, delete products  
