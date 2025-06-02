@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addBrands, deleteBrand, getBrands, editBrand } from "../entities/brands/brandSlice";
 import { Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { deleteBrand } from "../../features/delete-brand/delete-brand";
+import { addBrand } from "../../features/add-brand/add-brand";
+import { editBrand } from "../../features/edit-brand/edit-brand";
+import { getBrands } from "../../features/get-brands/get-brands";
 
 const OtherBrands = () => {
   const data = useSelector((state) => state.brand.data);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const [addBrand, setAddBrand] = useState("");
-
+  const [addBrandName, setAddBrandName] = useState("");
   const [editDialogOpen, setEditDialogOpen] = useState(false);
   const [editId, setEditId] = useState(null);
   const [editName, setEditName] = useState("");
@@ -18,8 +22,8 @@ const OtherBrands = () => {
   };
 
   const handleAddBrand = () => {
-    dispatch(addBrands({ BrandName: addBrand }));
-    setAddBrand("");
+    dispatch(addBrand(addBrandName));
+    setAddBrandName("");
   };
 
   const openEditDialog = (id, currentName) => {
@@ -42,12 +46,14 @@ const OtherBrands = () => {
   };
 
   useEffect(() => {
+    const token = localStorage.getItem("access_token");
+    if (!token) navigate("/");
     dispatch(getBrands());
   }, [dispatch]);
 
   return (
-    <div className="flex justify-between">
-      <div className="flex flex-col gap-2 w-[45%]">
+    <div className="flex flex-col-reverse md:flex-row justify-between">
+      <div className="flex flex-col gap-2 md:w-[45%]">
         <div className="flex justify-between text-gray-500 font-medium pb-4 border-b-[2px]">
           <p>Brands</p>
           <p>Actions</p>
@@ -74,9 +80,9 @@ const OtherBrands = () => {
           ))}
         </div>
       </div>
-      <div className="flex flex-col gap-6 p-7 border-[2px] border-gray-200 rounded-[4px] w-[50%]">
-        <h3>Add new brand</h3>
-        <TextField value={addBrand} onChange={(e) => setAddBrand(e.target.value)} label="Category Name" />
+      <div className="flex flex-col gap-4 p-6 rounded shadow md:w-[50%]">
+        <h3 className="text-xl font-semibold">Add new brand</h3>
+        <TextField value={addBrandName} onChange={(e) => setAddBrandName(e.target.value)} label="Category Name" />
         <Button onClick={handleAddBrand} variant="contained" className="w-[120px] self-end">
           Create
         </Button>

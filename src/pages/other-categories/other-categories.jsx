@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addCategory, deleteCategory, editCategory, getCategory } from "../entities/categortes/categorySlice";
-import { apiUrl } from "../shared/lib/utilits";
+import { useNavigate } from "react-router-dom";
+import { apiUrl } from "../../shared/lib/utilits";
 import { Button, TextField } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Dialog from "@mui/material/Dialog";
@@ -9,6 +9,10 @@ import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
+import { addCategory } from "../../features/add-Category/add-category";
+import { editCategory } from "../../features/edit-Category/edit-category";
+import { deleteCategory } from "../../features/delete-Category/delete-category";
+import { getCategories } from "../../features/get-categories/get-categories";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -22,6 +26,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 const OtherCategories = () => {
   const data = useSelector((state) => state.category.data);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [addOpen, setAddOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
@@ -33,10 +38,6 @@ const OtherCategories = () => {
   const [editCategoryId, setEditCategoryId] = useState(null);
   const [editCategoryName, setEditCategoryName] = useState("");
   const [editCategoryImage, setEditCategoryImage] = useState(null);
-
-  useEffect(() => {
-    dispatch(getCategory());
-  }, [dispatch]);
 
   const handleImageUpload = (file, setImageState, setPreviewState) => {
     setImageState(file);
@@ -84,6 +85,12 @@ const OtherCategories = () => {
     setEditCategoryImage(null);
     setEditOpen(true);
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem("access_token");
+    if (!token) navigate("/");
+    dispatch(getCategories());
+  }, [dispatch]);
 
   return (
     <div className="flex flex-col gap-5">

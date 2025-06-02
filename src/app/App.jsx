@@ -5,9 +5,11 @@ import Orders from "/src/pages/orders/orders";
 import Products from "/src/pages/products/products";
 import Other from "/src/pages/other/other";
 import Login from "/src/pages/login/login";
-import OtherCategories from "../widgets/other-categories";
-import OtherBrands from "../widgets/other-brands";
-import OtherBanners from "../widgets/other-banners";
+import OtherCategories from "../pages/other-categories/other-categories";
+import OtherBrands from "../pages/other-brands/other-brands";
+import OtherSubcategories from "../pages/other-subcategories/other-subcategories";
+import AddProduct from "../pages/add-product/add-product";
+import EditProduct from "../pages/edit-product/edit-product";
 
 function App() {
   const router = createBrowserRouter([
@@ -38,6 +40,14 @@ function App() {
           element: <Products />,
         },
         {
+          path: "products/add-product",
+          element: <AddProduct />,
+        },
+        {
+          path: "products/edit-product/:id",
+          element: <EditProduct />,
+        },
+        {
           path: "other",
           element: <Other />,
           children: [
@@ -54,8 +64,8 @@ function App() {
               element: <OtherBrands />,
             },
             {
-              path: "banners",
-              element: <OtherBanners />,
+              path: "subcategories",
+              element: <OtherSubcategories />,
             },
           ],
         },
