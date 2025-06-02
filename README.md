@@ -2,11 +2,9 @@
 
 **FastCart Admin Dashboard** is a powerful and user-friendly admin panel for the FastCart online store. Manage products, orders, users, and business processes through a modern, responsive interface built with React, Vite, and Redux Toolkit.
 
----
+## 🎯 Demo
 
-## 🎯 Demo : ![https://fastcart-admin.vercel.app](https://fastcart-admin.vercel.app)
-
----
+👉 [Live Demo](https://fastcart-admin.vercel.app)
 
 ## 🔧 Key Features
 
