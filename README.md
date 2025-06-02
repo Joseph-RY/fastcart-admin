@@ -1,70 +1,75 @@
+# 🛠 FastCart Admin Dashboard
 
-🛠 FastCart Admin Dashboard
-
-FastCart Admin Dashboard — мощная панель управления для онлайн-магазина FastCart. Здесь вы можете контролировать весь жизненный цикл продуктов, заказы, пользователей и бизнес-процессы с помощью современного интерфейса, построенного на React, Vite и Redux Toolkit.
-
-🔧 Основные возможности
-
-- Управление товарами: создание, редактирование, удаление
-- Отслеживание заказов и статусов доставки
-- Управление ролями и правами пользователей
-- Просмотр аналитики продаж и пользовательской активности
-- Интеграция с внешними сервисами и API
-
-🚀 Технологии
-
-- **React** — для динамичных и отзывчивых интерфейсов
-- **Vite** — быстрая сборка и обновления в режиме реального времени
-- **Redux Toolkit** — централизованное управление состоянием
-- **Shadcn/UI** — профессиональные UI-компоненты с Tailwind CSS и Radix
-
-📥 Быстрый старт
-
-```bash
-# Клонируйте репозиторий
-git clone https://github.com/your-username/fastcart-admin-dashboard.git
-cd fastcart-admin-dashboard
-
-# Установите зависимости
-npm install
-
-# Запустите в режиме разработки
-npm run dev
-```
-
-📂 Структура проекта
-
-```
-src/
-├── app/           # Конфигурация Redux store и провайдеры
-├── features/      # Логика управления продуктами, заказами, пользователями
-├── pages/         # Основные страницы (списки, дашборды, формы)
-├── components/    # UI-компоненты и виджеты
-├── utils/         # Вспомогательные функции и API-сервисы
-└── styles/        # Глобальные стили и темы
-```
-
-⚙️ CLI для компонентов Shadcn
-
-```bash
-npx shadcn-ui@latest add <component>
-```
-
-📜 Скрипты проекта
-
-| Команда        | Описание                               |
-|----------------|--------------------------------------|
-| `npm run dev`  | Запуск проекта в режиме разработки    |
-| `npm run build`| Сборка production-версии              |
-| `npm run lint` | Проверка кода на ошибки и стили       |
-
-🎯 Планы по развитию
-
-- Многоуровневая система ролей и прав доступа
-- Расширенные отчёты и графики аналитики
-- Интеграция с CRM и складскими системами
-- Автоматизация процессов и уведомления
+**FastCart Admin Dashboard** is a powerful and user-friendly admin panel for the FastCart online store. Manage products, orders, users, and business processes through a modern, responsive interface built with React, Vite, and Redux Toolkit.
 
 ---
 
-© 2025 FastCart Admin Dashboard — профессиональное решение для управления вашим бизнесом.
+## 🔧 Key Features
+
+- **Product Management:** create, edit, delete products  
+- **Order Tracking:** status updates and delivery logistics  
+- **User Management:** roles and access control  
+- **Analytics:** sales and user activity monitoring  
+- **Integrations:** connect external APIs and services  
+
+---
+
+## 🚀 Technologies
+
+- **React** — for dynamic and responsive UI  
+- **Vite** — lightning-fast build and hot module replacement  
+- **Redux Toolkit** — streamlined state management  
+- **Shadcn/UI** — professional components with Tailwind CSS and Radix  
+
+---
+
+## 📥 Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/fastcart-admin-dashboard.git
+cd fastcart-admin-dashboard
+
+# Install dependencies
+npm install
+
+# Run in development mode
+npm run dev
+```
+
+---
+
+## 📂 Project Structure
+
+```
+src/
+├── app/           # Redux store setup and providers
+├── features/      # Business logic for products, orders, users
+├── pages/         # Main pages (lists, forms, dashboards)
+├── components/    # Reusable UI components and widgets
+├── utils/         # Helper functions and API services
+└── styles/        # Global styles and themes
+```
+
+---
+
+## 📜 Project Scripts
+
+| Command          | Description                          |
+|------------------|------------------------------------|
+| `npm run dev`    | Run project in development mode     |
+| `npm run build`  | Build production version            |
+| `npm run lint`   | Check code for errors and styling   |
+
+---
+
+## 🎯 Roadmap
+
+- Multi-level role and permission system  
+- Advanced analytics with interactive reports and charts  
+- CRM and warehouse system integrations  
+- Business process automation and notifications  
+
+---
+
+© 2025 **FastCart Admin Dashboard** — professional solution to manage your online business.
