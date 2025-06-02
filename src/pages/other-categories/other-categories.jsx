@@ -9,9 +9,9 @@ import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import { addCategory } from "../../features/add-Category/add-category";
-import { editCategory } from "../../features/edit-Category/edit-category";
-import { deleteCategory } from "../../features/delete-Category/delete-category";
+import { addCategory } from "../../features/add-category/add-category";
+import { editCategory } from "../../features/edit-ctegory/edit-category";
+import { deleteCategory } from "../../features/delete-category/delete-category";
 import { getCategories } from "../../features/get-categories/get-categories";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
