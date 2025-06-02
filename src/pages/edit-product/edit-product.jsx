@@ -22,8 +22,6 @@ const EditProduct = () => {
   const colors = useSelector((state) => state.color.data);
   const product = useSelector((state) => state.products.product);
 
-  console.log(product.data);
-
   const [addProductName, setAddProductName] = useState("");
   const [addProductCode, setAddProductCode] = useState("");
   const [addProductText, setAddProductText] = useState("");
@@ -55,23 +53,23 @@ const EditProduct = () => {
     if (product?.data) {
       const data = product.data;
 
-      setAddProductName(data.productName || "");
-      setAddProductCode(data.code || "");
-      setAddProductText(data.description || "");
-      setAddProductPrice(data.price || "");
-      setAddProductDiscount(data.discountPrice || "");
+      setAddProductName(data.productName);
+      setAddProductCode(data.code);
+      setAddProductText(data.description);
+      setAddProductPrice(data.price);
+      setAddProductDiscount(data.discountPrice);
       setAddProductQuantity(data.quantity ?? "");
 
-      const matchedBrand = brands.find((b) => b.brandName === data.brand);
-      const matchedColor = colors.find((c) => c.colorName === data.color);
+      const matchedBrand = brands.find((e) => e.brandName === data.brand);
+      const matchedColor = colors.find((e) => e.colorName === data.color);
 
-      setSelectedBrand(matchedBrand?.id || "");
-      setSelectedColorId(matchedColor?.id || "");
-      setSelectedSubcategory(data.subCategoryId || "");
+      setSelectedBrand(matchedBrand?.id);
+      setSelectedColorId(matchedColor?.id);
+      setSelectedSubcategory(data.subCategoryId);
 
-      const matchedCategory = subcategory.find((cat) => cat.subCategories?.some((sub) => sub.id === data.subCategoryId));
+      const matchedCategory = subcategory.find((e) => e.subCategories?.some((sub) => sub.id === data.subCategoryId));
 
-      setSelectedCategory(matchedCategory?.id || "");
+      setSelectedCategory(matchedCategory?.id);
 
       if (data.images) {
         setImages(
@@ -87,39 +85,35 @@ const EditProduct = () => {
     }
   }, [product, brands, colors, subcategory]);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!addProductName || !addProductCode || !selectedBrand || !selectedColorId || !selectedSubcategory || !addProductPrice) {
       alert("Please fill in all required fields");
       return;
     }
 
-    const formData = new FormData();
-    formData.append("Id", id);
-    formData.append("ProductName", addProductName);
-    formData.append("Code", addProductCode);
-    formData.append("BrandId", selectedBrand);
-    formData.append("ColorId", selectedColorId);
-    formData.append("SubCategoryId", selectedSubcategory);
-    formData.append("Price", addProductPrice);
-    formData.append("Quantity", addProductQuantity);
-    formData.append("HasDiscount", addProductDiscount ? "true" : "false");
-    formData.append("DiscountPrice", addProductDiscount);
-    formData.append("Description", addProductText);
+    const productData = {
+      Id: id,
+      ProductName: addProductName,
+      Code: addProductCode,
+      BrandId: selectedBrand,
+      ColorId: selectedColorId,
+      SubCategoryId: selectedSubcategory,
+      Price: addProductPrice,
+      Quantity: addProductQuantity,
+      HasDiscount: addProductDiscount ? true : false,
+      DiscountPrice: addProductDiscount,
+      Description: addProductText,
+      Weight: "Easy",
+      Size: "X, XL, SM",
+      // ImageIdsToKeep: images.filter((img) => !img.file && img.id).map((img) => img.id),
+    };
 
-    const existingImageIds = images.filter((img) => !img.file && img.id).map((img) => img.id);
-    existingImageIds.forEach((id) => {
-      formData.append("ImageIdsToKeep", id);
-    });
-
-    images
-      .filter((img) => img.file)
-      .forEach((img) => {
-        formData.append("Images", img.file);
-      });
-
-    dispatch(updateProduct({ id, data: formData })).then(() => {
+    try {
+      await dispatch(updateProduct(productData)).unwrap();
       navigate("/dashboard/products");
-    });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleOptionsChecked = (e) => setDefOptionsChecked(e.target.checked);
