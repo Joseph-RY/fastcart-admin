@@ -155,7 +155,7 @@ const OtherCategories = () => {
         </DialogContent>
       </BootstrapDialog>
 
-      <div className="flex flex-wrap justify-between gap-5">
+      <div className="flex flex-wrap gap-x-[4%] gap-y-10">
         {data?.map((category) => (
           <div key={category.id} className="relative w-[45%] md:w-[22%] h-[200px] rounded-md border border-gray-400 p-4">
             <div className="absolute top-4 right-4 flex gap-4">
@@ -172,7 +172,7 @@ const OtherCategories = () => {
             </div>
 
             <div className="w-[100px] h-[100px] flex flex-col items-start">
-              <img src={`${apiUrl}/images/${category.categoryImage}`} alt={category.categoryName} className="w-full object-contain mb-4" />
+              <img src={`${apiUrl}/images/${category.categoryImage}`} alt={category.categoryName} className="w-full rounded-2xl object-contain mb-4" />
               <h3 className="self-center text-base font-medium">{category.categoryName}</h3>
             </div>
           </div>
